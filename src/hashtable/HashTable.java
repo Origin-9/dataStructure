@@ -33,6 +33,7 @@ public class HashTable<K, V> {
         return size;
     }
 
+
     public void add(K key, V value){
         TreeMap<K, V> map = hashtable[hash(key)];
         if(map.containsKey(key))
@@ -40,7 +41,6 @@ public class HashTable<K, V> {
         else{
             map.put(key, value);
             size ++;
-
             if(size >= upperTol * M)
                 resize(2 * M);
         }
@@ -75,6 +75,7 @@ public class HashTable<K, V> {
         return hashtable[hash(key)].get(key);
     }
 
+    //扩容
     private void resize(int newM){
         TreeMap<K, V>[] newHashTable = new TreeMap[newM];
         for(int i = 0 ; i < newM ; i ++)
